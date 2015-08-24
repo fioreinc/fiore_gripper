@@ -49,7 +49,8 @@ add_message_files(
 #   Message1.msg
 #   Message2.msg
   FILES
-  gripper.msg
+  input.msg
+  output_force_sensors.msg
 )
 
 ## Generate services in the 'srv' folder
