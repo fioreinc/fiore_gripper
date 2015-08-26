@@ -11,22 +11,22 @@
  */
 
 #include <ros.h>
-#include <gripper_msgs/input.h>
-#include <gripper_msgs/output_force_sensors.h>
+#include <gripper_msgs/gripperInput.h>
+#include <gripper_msgs/outputForceSensors.h>
 //#include <rosserial_arduino/Adc.h>
 
 ros::NodeHandle nh;
 
 //rosserial_arduino::Adc adc_msg;
-gripper_msgs::output_force_sensors output_force_sensors_msg;
-gripper_msgs::input input_msg;
+gripper_msgs::outputForceSensors outputForceSensors_msg;
+gripper_msgs::gripperInput gripperInput_msg;
 
-void inputCb( const gripper_msgs::input& in_input_message){
-  digitalWrite(7, in_input_message.air_transducer_voltage);   // blink the led
+void inputCb( const gripper_msgs::gripperInput& in_gripperInput_msg){
+  digitalWrite(7, in_gripperInput_msg.air_transducer_voltage);   // blink the led
 }
 
 ros::Publisher pub("gripper_output_force_sensors", &output_force_sensors_msg);
-ros::Subscriber<gripper_msgs::input> sub("gripper_input", &inputCb );
+ros::Subscriber<gripper_msgs::gripperInput> sub("gripper_input", &inputCb );
 
 void setup()
 {

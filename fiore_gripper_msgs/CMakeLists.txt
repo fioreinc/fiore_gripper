@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gripper_msgs)
+project(fiore_gripper_msgs)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -49,8 +49,9 @@ add_message_files(
 #   Message1.msg
 #   Message2.msg
   FILES
-  input.msg
-  output_force_sensors.msg
+  GripperInput.msg
+  GripperOutput.msg
+  ForceSensors.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -104,7 +105,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES gripper_msgs
+#  LIBRARIES fiore_gripper_msgs
 #  CATKIN_DEPENDS rospy std_msgs
 #  DEPENDS system_lib
   CATKIN_DEPENDS message_runtime
@@ -122,24 +123,24 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(gripper_msgs
-#   src/${PROJECT_NAME}/gripper_msgs.cpp
+# add_library(fiore_gripper_msgs
+#   src/${PROJECT_NAME}/fiore_gripper_msgs.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(gripper_msgs ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(fiore_gripper_msgs ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(gripper_msgs_node src/gripper_msgs_node.cpp)
+# add_executable(fiore_gripper_msgs_node src/fiore_gripper_msgs_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(gripper_msgs_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(fiore_gripper_msgs_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(gripper_msgs_node
+# target_link_libraries(fiore_gripper_msgs_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -158,7 +159,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS gripper_msgs gripper_msgs_node
+# install(TARGETS fiore_gripper_msgs fiore_gripper_msgs_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -183,7 +184,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_gripper_msgs.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_fiore_gripper_msgs.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

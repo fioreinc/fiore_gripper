@@ -4,11 +4,11 @@
 ## to the 'chatter' topic
 
 import rospy
-from std_msgs.msg import Int16
+from gripper_msgs.msg import gripperInput
 
 def talker():
-    pub = rospy.Publisher('gripper_control', Int16, queue_size=10)
-    rospy.init_node('voltage_commander', anonymous=True)
+    pub = rospy.Publisher('gripper_input', gripperInput, queue_size=10)
+    rospy.init_node('demo_gripper_input', anonymous=True)
     rate = rospy.Rate(10) # 10hz
     inVoltage = 0
     while not rospy.is_shutdown():
