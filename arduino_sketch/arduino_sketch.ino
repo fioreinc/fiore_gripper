@@ -22,7 +22,7 @@ fiore_gripper_msgs::GripperOutput outputMsg;
 fiore_gripper_msgs::GripperInput inputMsg;
 
 void inputCb( const fiore_gripper_msgs::GripperInput& inInputMsg){
-  digitalWrite(7, inInputMsg.air_transducer_voltage);   // blink the led
+  analogWrite(7, inInputMsg.air_transducer_voltage);   // blink the led
 }
 
 ros::Publisher pub("gripper_output", &outputMsg);
