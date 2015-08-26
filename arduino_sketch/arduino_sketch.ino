@@ -4,7 +4,7 @@
  * Is responsible for publishing sensor information
  * and subscribing to command information
  * 
- * NOTE: The XBee shield has a switch with labels UART and DLINE
+ * WARNING: The XBee shield has a switch with labels UART and DLINE
  *  The switch must be in the DLINE position when uploading sketches to the arduino.
  *  Then in the UART position when running.
  *  If code is uploaded while in the UART position it will brick the XBee
