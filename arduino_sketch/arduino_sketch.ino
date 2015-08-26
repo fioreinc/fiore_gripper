@@ -11,22 +11,22 @@
  */
 
 #include <ros.h>
-#include <gripper_msgs/gripperInput.h>
-#include <gripper_msgs/outputForceSensors.h>
+#include <fiore_gripper_msgs/GripperInput.h>
+#include <fiore_gripper_msgs/GripperOutput.h>
 //#include <rosserial_arduino/Adc.h>
 
 ros::NodeHandle nh;
 
 //rosserial_arduino::Adc adc_msg;
-gripper_msgs::outputForceSensors outputForceSensors_msg;
-gripper_msgs::gripperInput gripperInput_msg;
+fiore_gripper_msgs::GripperOutput outputMsg;
+fiore_gripper_msgs::GripperInput inputMsg;
 
-void inputCb( const gripper_msgs::gripperInput& in_gripperInput_msg){
-  digitalWrite(7, in_gripperInput_msg.air_transducer_voltage);   // blink the led
+void inputCb( const fiore_gripper_msgs::GripperInput& inInputMsg){
+  digitalWrite(7, inInputMsg.air_transducer_voltage);   // blink the led
 }
 
-ros::Publisher pub("gripper_output_force_sensors", &output_force_sensors_msg);
-ros::Subscriber<gripper_msgs::gripperInput> sub("gripper_input", &inputCb );
+ros::Publisher pub("gripper_output", &outputMsg);
+ros::Subscriber<fiore_gripper_msgs::GripperInput> sub("gripper_input", &inputCb );
 
 void setup()
 {
@@ -47,16 +47,16 @@ int averageAnalog(int pin){
 void loop()
 {
 
-    output_force_sensors_msg.right_top    = averageAnalog(8);
-    output_force_sensors_msg.right_middle = averageAnalog(9);
-    output_force_sensors_msg.right_bottom = averageAnalog(10);
-    output_force_sensors_msg.right_tip    = averageAnalog(11);
-    output_force_sensors_msg.left_top     = averageAnalog(12);
-    output_force_sensors_msg.left_middle  = averageAnalog(13);
-    output_force_sensors_msg.left_bottom  = averageAnalog(14);
-    output_force_sensors_msg.left_tip     = averageAnalog(15);
+  outputMsg.force_sensors.right_top    = averageAnalog(8);
+  outputMsg.force_sensors.right_middle = averageAnalog(9);
+  outputMsg.force_sensors.right_bottom = averageAnalog(10);
+  outputMsg.force_sensors.right_tip    = averageAnalog(11);
+  outputMsg.force_sensors.left_top     = averageAnalog(12);
+  outputMsg.force_sensors.left_middle  = averageAnalog(13);
+  outputMsg.force_sensors.left_bottom  = averageAnalog(14);
+  outputMsg.force_sensors.left_tip     = averageAnalog(15);
 
-    pub.publish(&output_force_sensors_msg);
+  pub.publish(&outputMsg);
 
   nh.spinOnce();
   delay(500);

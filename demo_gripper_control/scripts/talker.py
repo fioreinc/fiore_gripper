@@ -4,17 +4,17 @@
 ## to the 'chatter' topic
 
 import rospy
-from gripper_msgs.msg import gripperInput
+from fiore_gripper_msgs.msg import GripperInput
 
 def talker():
-    pub = rospy.Publisher('gripper_input', gripperInput, queue_size=10)
+    pub = rospy.Publisher('gripper_input', GripperInput, queue_size=10)
     rospy.init_node('demo_gripper_input', anonymous=True)
     rate = rospy.Rate(10) # 10hz
-    inVoltage = 0
+    GripperInput.air_transducer_voltage = 0
     while not rospy.is_shutdown():
-        inVoltage = int(raw_input("Desired inVoltage: "))
-        rospy.loginfo(inVoltage)
-        pub.publish(inVoltage)
+        GripperInput.air_transducer_voltage = int(raw_input("Desired inVoltage: "))
+        rospy.loginfo(GripperInput.air_transducer_voltage)
+        pub.publish(GripperInput.air_transducer_voltage)
         rate.sleep()
 
 if __name__ == '__main__':
