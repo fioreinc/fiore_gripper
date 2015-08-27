@@ -18,6 +18,7 @@ First thing to do is to make sure the arduino sketch contained in the folder `ar
 
 This package contains a simple python script that publishes to the topic `\gripper_input` values that come from user input on the command line. Essentially a quick and dirty way to control the gripper. 
 The script can be run with:
+    
     $ rosrun demo_gripper_control talker.py
 
 
