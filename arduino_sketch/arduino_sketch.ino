@@ -13,16 +13,15 @@
 #include <ros.h>
 #include <fiore_gripper_msgs/GripperInput.h>
 #include <fiore_gripper_msgs/GripperOutput.h>
-//#include <rosserial_arduino/Adc.h>
 
 ros::NodeHandle nh;
 
-//rosserial_arduino::Adc adc_msg;
 fiore_gripper_msgs::GripperOutput outputMsg;
 fiore_gripper_msgs::GripperInput inputMsg;
 
+// callback function for when something is published on the "gripper_input" topic
 void inputCb( const fiore_gripper_msgs::GripperInput& inInputMsg){
-  analogWrite(7, inInputMsg.air_transducer_voltage);   // blink the led
+  analogWrite(7, inInputMsg.air_transducer_voltage);  
 }
 
 ros::Publisher pub("gripper_output", &outputMsg);
@@ -59,5 +58,5 @@ void loop()
   pub.publish(&outputMsg);
 
   nh.spinOnce();
-  delay(500);
+  delay(50);
 }
